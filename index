@@ -2,53 +2,18 @@
 <html>
 <head>
     <title>jwach</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-            margin: 0;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px;
-        }
-
-        h1 {
-            margin-bottom: 10px;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
-
-        .gallery img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-        }
-    </style>
 </head>
+<body style="background:#111;color:white;font-family:Arial">
 
-<body>
-
-<header>
     <h1>jwach</h1>
-    <p>check it</p>
-</header>
 
-<footer>
-    Contact: your@email.com
-</footer>
+    <p>check it</p>
+
+    <p>This is a test website.</p>
+
+    <footer>
+        Contact: your@email.com
+    </footer>
 
 </body>
 </html>
