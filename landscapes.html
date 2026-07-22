@@ -38,19 +38,25 @@
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: #333333; 
+    color: #F8F6F2; 
    }
 
    .link-icon{
     width: 20px;
     height: 20px;
-    display:block; 
+    display:inline-block; 
+
+    background-color: #F8F6F2;
+
+    -webkit-mask: url('images/home-icon.svg') no-repeat center / contain;
+    mask: url('spiral.svg) no-repeat center / contain;
    }
    
   </style>
  
   <h1>landscape</h1>
  <body> <a href="index.html" class="link"> 
+  <span class="link-icon"></span>
   <img src="spiral.svg" class="link-icon">
   home </a>
 
