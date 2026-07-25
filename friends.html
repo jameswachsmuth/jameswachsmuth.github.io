@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
+ <head>
  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-
- <head>
  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> friends </title>
- 
-  <style>
-    h1{
-      font-family: "EB Garamond"; 
-       color: #2b2e40;
+  <title> landscapes </title>
+  <style> h1{
+  text-align: left;
+ font-family: "EB Garamond"; 
+    color: #2b2e40;
     font-size: 40px; 
-     text-align: center;
-    }
-
+    font-family: "EB Garamond";
+   }
    body{
-    text-align: center;
     background-color: #f7f7f2;
      font-family: "EB Garamond";
+    display: flex;
+    flex-direction: column;
    }
    .picture-holder{
     column-count: 3;
@@ -37,7 +37,7 @@
     display: block;
    }
    .link{
-   display: inline-flex;
+    display: inline-flex;
     align-items: center;
     text-decoration: none;
     color:#2b2e40; 
@@ -45,7 +45,7 @@
    }
 
    .link-icon{
-     transform: translateY(1px);
+    transform: translateY(1px);
     width: 10px;
     height: 10px;
     display:inline-block; 
@@ -55,6 +55,13 @@ margin-right: 3px;
     -webkit-mask: url('spiral.svg') no-repeat center / contain;
     mask: url('spiral.svg') no-repeat center / contain;
    }
+   
+    html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
    .top-header{
     display: flex; 
     align-items: center;
@@ -70,18 +77,20 @@ margin-right: 3px;
    }
   
   </style>
-</head>
-
+ </head>
+ 
  <body>
-  
-   <header class="top-header"> 
-  <div class="header-title" style="padding-left:20px; font-size: 40px; color: #2b2e40; font-weight: 700;"> landscape </div>
+  <header class="top-header"> 
+  <div class="header-title" style="padding-left:20px; font-size: 40px; color: #2b2e40; font-weight: 700;"> friend </div>
    
    <a href="index.html" class="link"style="margin-top:30px;"> 
   <span class="link-icon"  ></span> home
    </a>
     
   <div class="header-spacer"></div>
+
+  
+  </header> 
 
    <div class="picture-holder">
   
@@ -106,14 +115,11 @@ margin-right: 3px;
     </div>
     
  </div>
-
-  <footer style="display: flex; justify-content: space-between; padding: 0 15px;">
+<footer style="display: flex; justify-content: space-between; padding: 0 15px; margin-top: auto;">
   <span style="flex: 1;"></span>
   <span style="flex: 1; text-align: center;">wachsmuthjames@gmail.com</span>
   <span style="flex: 1; text-align: right;">2026</span>
 </footer>
-  
  </body>
 
 </html>
-  
