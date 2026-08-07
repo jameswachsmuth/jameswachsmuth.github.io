@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Chat Box -->
+    <div id="chat-container">
+        <div id="chat-header">Live Chat Support</div>
+        <div id="chat-messages"></div>
+        <div id="chat-input-area">
+            <input type="text" id="username" placeholder="Your Name" value="Anonymous">
+            <div class="input-row">
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Connection Logic -->
+    <script type="module">
+        import { initializeApp } from "https://gstatic.com";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://gstatic.com";
+
+        // REPLACE THE BLOCK BELOW WITH YOUR EXACT FIREBASE CONFIG DETAILS
+      const firebaseConfig = {
+  apiKey: "AIzaSyB2cCnCLsSFv93DEl3Y-NSo3PjDC3J9OoI",
+  authDomain: "james-chat-4bb52.firebaseapp.com",
+  projectId: "james-chat-4bb52",
+  storageBucket: "james-chat-4bb52.firebasestorage.app",
+  messagingSenderId: "542696902452",
+  appId: "1:542696902452:web:90ab2bdc7c9e8c3da85f61",
+  measurementId: "G-17TS109BF9"
+        };
+
+        // Initialize App Connection
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const messagesRef = collection(db, "messages");
+
+        // Grab HTML Elements
+        const messagesDiv = document.getElementById("chat-messages");
+        const messageInput = document.getElementById("message-input");
+        const usernameInput = document.getElementById("username");
+        const sendBtn = document.getElementById("send-btn");
+
+        // Push Message to Firebase
+        async function sendMessage() {
+            const text = messageInput.value.trim();
+            const user = usernameInput.value.trim() || "Anonymous";
+            
+            if (text !== "") {
+                await addDoc(messagesRef, {
+                    name: user,
+                    message: text,
+                    timestamp: serverTimestamp()
+                });
+                messageInput.value = ""; // Clear input field
+            }
+        }
+
+        // Click or Press Enter to Send
+        sendBtn.addEventListener("click", sendMessage);
+        messageInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+        });
+
+        // Pull Live Stream of Database Messages
+        const q = query(messagesRef, orderBy("timestamp", "asc"));
+        onSnapshot(q, (snapshot) => {
+            messagesDiv.innerHTML = ""; // Clear old message UI
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                if(data.message) {
+                    const msgEl = document.createElement("div");
+                    msgEl.className = "message";
+                    msgEl.innerHTML = `<strong>${data.name}:</strong> ${data.message}`;
+                    messagesDiv.appendChild(msgEl);
+                }
+            });
+            messagesDiv.scrollTop = messagesDiv.scrollHeight; // Force scroll to bottom
+        });
+    </script>
+</body>
+</html>
