@@ -70,20 +70,17 @@ import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTim
             if (e.key === "Enter") sendMessage();
         });
 
-              // Pull Live Stream of Database Messages
+        // Pull Live Stream of Database Messages
         const q = query(messagesRef, orderBy("timestamp", "asc"));
         onSnapshot(q, (snapshot) => {
             messagesDiv.innerHTML = ""; // Clear old message UI
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                
-                // FIXED: Only render the message if it has successfully loaded its data content
-                if (data.message && data.name) {
+                if(data.message) {
                     const msgEl = document.createElement("div");
                     msgEl.className = "message";
                     msgEl.innerHTML = `<strong>${data.name}:</strong> ${data.message}`;
                     messagesDiv.appendChild(msgEl);
-
                 }
             });
             messagesDiv.scrollTop = messagesDiv.scrollHeight; // Force scroll to bottom
