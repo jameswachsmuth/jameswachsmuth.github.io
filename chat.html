@@ -75,7 +75,7 @@ import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTim
         onSnapshot(q, (snapshot) => {
             messagesDiv.innerHTML = ""; // Clear old message UI
             snapshot.forEach((doc) => {
-                const data = doc.data();
+const data = doc.data({ serverTimestamps: "estimate" });
                 if(data.message) {
                     const msgEl = document.createElement("div");
                     msgEl.className = "message";
